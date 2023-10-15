@@ -1,7 +1,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// 棒人間の初期位置と速度
 let manX = -30;
 let manY = 355 + 150;
 let manSpeedX = 2;
@@ -18,14 +17,6 @@ imagesMammoth[1].src = "assets/mammothL2.png";
 imagesMammoth[2].src = "assets/mammothL3.png";
 imagesMammoth[3].src = "assets/mammothL4.png";
 
-// let imagesMammoth = [];
-
-// for (let i = 0; i < 4; i++) {
-//     imagesMammoth[i] = new Image();
-//     imagesMammoth[i].src = `assets/mammothL${i}.png`;
-// }
-
-
 
 let imageMammoth = new Image();
 imageMammoth.src = "assets/mammothL.png";
@@ -38,12 +29,10 @@ function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // ここに Canvas に関連する描画コードを追加
 }
 
 const drawMan = () => {
 
-    // 棒人間を描画
     ctx.fillStyle = "black";
     ctx.fillRect(manX, manY, 10, 50);
 };
@@ -86,22 +75,11 @@ const gameLoop = () => {
 
     resizeCanvas();
 
-    // キャンバスをクリア
     drawCanvas();
     timeEvolution();
     requestAnimationFrame(gameLoop);
 }
 
-// キーボード入力を処理
-document.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowRight") {
-        // 右キーが押された場合、棒人間を右に移動
-        stickmanX += stickmanSpeedX;
-    } else if (event.key === "ArrowLeft") {
-        // 左キーが押された場合、棒人間を左に移動
-        stickmanX -= stickmanSpeedX;
-    }
-});
 
 // ゲーム開始
 gameLoop();
